@@ -24,12 +24,17 @@ class LinksController < ApplicationController
   def update
     @link = Link.find(params[:id])
     if @link.update(link_params)
-      flash.now[:notice] = "Successfully updated #{@link.title}"
+      flash[:notice] = "Successfully updated #{@link.title}"
       redirect_to links_path
     else
-      flash[:error] = @link.errors.full_messages.join(' ')
+      flash[:error] = "Must submit a valid URL"
       render :edit
     end
+  end
+
+  def destroy
+    @link = Link.find(params[:id]).destroy
+    redirect_to links_path
   end
 
 

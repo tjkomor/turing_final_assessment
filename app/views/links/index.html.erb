@@ -38,5 +38,6 @@
   <button class="read">Mark as Read</button>
   <button class="unread">Mark as Unread</button>
   <td><%= button_to 'Edit', edit_link_path(link), method: :get %></td>
+  <td><%= button_to 'Delete', link_path(link), method: 'delete' %></td>
 </div>
 <% end %>
