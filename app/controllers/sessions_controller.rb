@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
   def create
     if valid_user?
       session[:user_id] = @user.id
-      redirect_to task_lists_path
+      redirect_to links_path
     else
       flash.now[:errors] = "Invalid login"
       render :new
     end
   end
-  
+
   private
 
   def session_params
