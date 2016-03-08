@@ -1,0 +1,33 @@
+<% if flash[:notice] %>
+<div class="notice">
+  <% flash[:notice].each do |message| %>
+  <%= message %>
+  <% end %>
+</div>
+<% end %>
+
+<h2>Add A New Link</h2>
+<% if flash[:errors] %>
+<div class="errors">
+  <% flash[:errors].each do |message| %>
+  <%= message %>
+  <% end %>
+</div>
+<% end %>
+
+<%= form_for :link, url: '/links' do |f| %>
+<%= f.label :title %>:
+<%= f.text_field :title %><br />
+
+<%= f.label :url %>:
+<%= f.text_field :url %><br />
+
+<%= f.submit "Create New Link"%>
+<% end %>
+
+<h1>My Links</h1>
+<hr>
+<% @links.each do |link| %>
+  <h3>Title: <%= link.title %></h3>
+  <h5>Url: <%= link.url %></h5>
+<% end %>
