@@ -1,8 +1,9 @@
 require 'test_helper'
 
-class UserCanCreateLinkTest < ActionDispatch::IntegrationTest
+class UserCanAddLinkToListTest < ActionDispatch::IntegrationTest
 
-  test "link is created" do
+  test "user can create list" do
+    skip
     user = User.create(email: "tyler@tyler.com", password: "password")
     visit login_path
     fill_in "Email", with: user.email
@@ -14,21 +15,23 @@ class UserCanCreateLinkTest < ActionDispatch::IntegrationTest
 
     click_button "Create New Link"
 
-    assert_equal links_path, current_path
-
     assert page.has_content?("ESPN")
     assert page.has_content?("Link created!")
-  end
 
-  test "title can't be blank" do
-    user = User.create(email: "tyler@tyler.com", password: "password")
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
-    click_button "Login"
-    fill_in "Url", with: "cooooooool"
-    click_button "Create New Link"
+    click_button "New List"
+
+    fill_in "Title", with: "First List"
+
+    click_button "Submit"
+
+    click_button "add to list"
+
+    click_link "First List"
+
+
 
     assert_equal links_path, current_path
+
+
   end
 end
