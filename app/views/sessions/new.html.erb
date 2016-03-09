@@ -1,7 +1,4 @@
-<div class="well">
-  <div class="btn btn-default" role="button">
-    <%= link_to "Create Account", new_user_path, style: "color:blue;"%>
-  </div>
+<div class="well center">
 
   <h1>Login</h1>
 
@@ -24,6 +21,9 @@
     </div>
 
     <%= f.submit "Login", class: "btn btn-default" %>
+    <div class="btn btn-default" role="button">
+      <%= link_to "Create Account", new_user_path, style: "color:blue;"%>
+    </div>
   </div>
   <% end %>
 </div>
